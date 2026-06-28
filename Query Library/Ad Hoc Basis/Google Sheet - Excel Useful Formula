@@ -1,0 +1,23 @@
+-- BD number Check
+=IF(LEFT(C2,3)="880",
+     C2,
+     IF(LEFT(C2,1)="0",
+        "88"&C2,
+        "880"&C2
+     )
+)
+
+
+-- BD Number Format
+=IF(LEN(
+   IF(LEFT(C2,3)="880",
+      C2,
+      IF(LEFT(C2,1)="0","88"&C2,"880"&C2)
+   )
+)=13,
+   IF(LEFT(C2,3)="880",
+      C2,
+      IF(LEFT(C2,1)="0","88"&C2,"880"&C2)
+   ),
+   "INVALID"
+)
