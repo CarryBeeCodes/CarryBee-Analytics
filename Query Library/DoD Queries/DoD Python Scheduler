@@ -1,0 +1,74 @@
+conda activate carrybee-auto
+cd /d "D:\Carry Bee Projects\carrybee-automation"
+
+python -m src.jobs.cartup_fid_to_drive
+python -m src.jobs.cartup_rid_to_drive
+python -m src.jobs.paperfly_fid_last30
+python -m src.jobs.paperfly_rid_last60
+python -m src.jobs.paperfly_rid_last60
+python -m src.jobs.daraz_dod_tracker
+python -m src.jobs.processed_parcels_ops_to_drive
+python -m src.jobs.aging_onprocess_to_sheet
+python -m src.jobs.aging_onprocess_region2_to_sheet
+python -m src.jobs.business_daywise_orders_to_sheet
+python -m src.jobs.wrong_sorting_to_sheet
+python -m src.jobs.call_validation
+python -m src.jobs.xda_wise_parcels_to_drive
+python -m src.jobs.maintracker_update_and_append
+python -m src.jobs.return_maintracker_update_and_append
+
+python -m src.jobs.run_not_closed_to_sheet
+python -m src.jobs.hub_submission_reports_to_sheet
+conda activate carrybeppe-auto
+cd /d "D:\Carry Bee Projects\carrybee-automation"
+python -m src.jobs.aging_onprocess_to_sheet
+python -m src.jobs.payment_tracker_to_sheet --start "2026-02-01" --mode replace
+python -m src.jobs.payment_tracker_summary_to_sheet --start "2026-02-01" --mode replace
+python -m src.jobs.payment_tracker_summary_to_sheet_v2 --start "2026-03-01" --mode replace
+python -m src.jobs.payment_tracker_funnel_revamp_to_sheet --start "2026-03-01 00:00:00" --end "2026-06-25 00:00:00" --chunk-days 2
+
+-- Weight Slab WoW:
+cd /d "D:\Carry Bee Projects\carrybee-automation"
+python -m src.jobs.weight_slab_wow_to_sheet --mode replace
+python -m src.jobs.weight_slab_wow_to_sheet --mode replace --end "2026-03-04"
+python -m src.jobs.weight_slab_wow_to_sheet --mode replace --end "2026-05-01 00:00:00"
+
+
+cd /d "D:\Carry Bee Projects\carrybee-automation"
+python -m src.jobs.lmh_reprocess_return_wow_to_sheet --mode replace
+python -m src.jobs.lmh_reprocess_return_wow_to_sheet --mode replace --end "2026-02-19"
+python -m src.jobs.agent_attendance_orders_full_to_sheet --start "2026-04-21" --end "2026-05-20"
+
+cd /d "D:\Carry Bee Projects\carrybee-automation"
+python -m src.jobs.xda_wise_parcels_to_drive
+
+python -m src.jobs.xda_wise_parcels_to_drive --start "2026-03-01 05:00" --end "2026-03-05 22:00"
+
+cd /d "D:\Carry Bee Projects\carrybee-automation"
+python -m src.jobs.lmh_exception_reports_to_sheet
+python -m src.jobs.maintracker_lmh_not_received_to_sheet
+
+
+conda activate carrybee-auto
+cd /d "D:\Carry Bee Projects\carrybee-automation"
+python -m src.jobs.business_pricing_insights_to_csv --out "D:\Carry Bee Projects\carrybee-automation\out\18_June.csv"
+python -m src.jobs.business_pricing_insights_v4_to_csv --out "D:\Carry Bee Projects\carrybee-automation\out\All_Merchant_Rate.csv"
+
+
+python -m src.jobs.business_pricing_insights_v4_to_csv --out "D:\Carry Bee Projects\carrybee-automation\out\All_Merchant_Rate.csv"
+
+cd /d "D:\Carry Bee Projects\carrybee-automation"
+python -m src.jobs.maintracker_lmh_ws_update_append
+
+
+python -m src.jobs.dod_tracker_append_to_sheet --sheet-id 1x-oxe_LRVmSC9LDn-u86u7BHSolXnkGCjm0SQAGvB-o
+
+python -m src.jobs.dod_tracker_full_to_sheet --sheet-id 1x-oxe_LRVmSC9LDn-u86u7BHSolXnkGCjm0SQAGvB-o --start 2026-04-01 --end 2026-04-05
+
+python -m src.jobs.run_not_closed_to_sheet --start-date 2025-02-01 --end-date-exclusive 2026-06-28
+python -m src.jobs.hub_submission_reports_to_sheet --start-date 2025-02-01 --end-date-exclusive 2026-06-28
+cd "D:\Carry Bee Projects\carrybee-automation"
+	python -m src.jobs.delivery_agent_attempt_report_to_sheet --start 2026-05-12 --end 2026-05-
+	Monthly Summary:
+	python -m src.jobs.mohoms_rvn_summary_report --start "2026-02-01 00:00:00" --end "2026-06-01 00:00:00"
+	python -m src.jobs.top_merc
