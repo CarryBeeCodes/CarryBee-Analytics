@@ -1,1 +1,56 @@
+cd /d "D:\Carry Bee Projects\carrybee-automation"
+python -m src.jobs.business_pricing_insights_v2_to_csv --business-ids-file "D:\Carry Bee Projects\carrybee-automation\text files\business_ids.txt"
+python -m src.jobs.payment_tracker_to_sheet --start "2026-02-01" --mode upsert
+python -m src.jobs.terminal_status_wrong_sorting --start "2026-02-01" --end "2026-02-28" --chunk-days 3
+
+Discount Rate
+python -m src.jobs.business_pricing_insights_overall_to_csv --out "D:\Carry Bee Projects\carrybee-automation\out\Merchant Rate April.csv"
+
+	python -m src.jobs.business_pricing_insights_overall_to_csv_fixed --out "D:\Carry Bee Projects\carrybee-automation\out\MerchantRateMaytill3th.csv"
+
+python -m src.jobs.Consignment_Rate_check_chunked --out "D:\Carry Bee Projects\carrybee-automation\out\April Check.csv"
+
+Monthly CSV:
+cd /d "D:\Carry Bee Projects\carrybee-automation"
+python -m src.jobs.oms_rvn_detail_report
+
+Run with custom time range:
+python -m src.jobs.oms_rvn_detail_report --start "2026-06-12 00:00:00" --end "2026-06-15 00:00:00"
+
+Run with created_at + 6 hours filter instead of COALESCE(sorted_at, created_at) + 6 hours:
+python -m src.jobs.oms_rvn_detail_report --start "2026-05-01 00:00:00" --end "2026-06-01 00:00:00" --filter-ts created_at
+
+Safer Chunking:
+python -m src.jobs.oms_rvn_detail_report --start "2026-04-01 00:00:00" --end "2026-05-01 00:00:00" --filter-ts sorted_or_created --chunk-days 1 --db-retries 5 --retry-sleep-sec 10
+
+Same Store
+python -m src.jobs.same_store_performance
+python -m src.jobs.may_same_store_performance
+
+Citywise Analysis:
+python -m src.jobs.citywise_analysis_fixed
+python -m src.jobs.citywise_analysis_may
+
+python -m src.jobs.merchant_registration_update_and_append
+
+Top Merchant Dashboard:
+Full Data
+python -m src.jobs.top_merchant_dashboard_backfill
+python -m src.jobs.top_merchant_dashboard_backfill --start "2025-03-01 00:00:00" --daily-start "2026-06-01 00:00:00"
+
+Daily Incremental:
+python -m src.jobs.top_merchant_dashboard_incremental
+python -m src.jobs.top_merchant_dashboard_incremental --reports daily
+python -m src.jobs.top_merchant_dashboard_incremental --reports daily,sorted,financial
+daily
+forward_terminal
+forward_inprocess
+reverse_terminal
+reverse_inprocess
+sorted
+financial
+all
+
+python -m src.jobs.top_merchant_dashboard_incremental --target-date "2026-06-21" --reports all
+
 
